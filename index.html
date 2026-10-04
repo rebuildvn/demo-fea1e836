@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An đại phát — Website đang được xây dựng</title>
+<meta name="description" content="Website mới của An đại phát đang được rebuild.vn thiết kế. The new An đại phát website is being built by rebuild.vn.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: hsl(166, 100%, 41.6%);
+    --teal-light: hsl(166, 80%, 85%);
+    --navy: hsl(210, 75%, 14%);
+    --navy-light: hsl(210, 50%, 25%);
+    --muted: hsl(210, 30%, 75%);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #fff;
+    background: radial-gradient(1200px 600px at 85% -10%, hsla(166, 100%, 41.6%, .22), transparent 60%),
+                radial-gradient(900px 500px at -10% 110%, hsla(166, 100%, 41.6%, .14), transparent 60%),
+                var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+  .grid {
+    position: fixed; inset: 0; pointer-events: none;
+    background-image: linear-gradient(hsla(0,0%,100%,.04) 1px, transparent 1px),
+                      linear-gradient(90deg, hsla(0,0%,100%,.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  }
+  main {
+    position: relative; flex: 1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 64px 24px 32px;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px; border-radius: 999px;
+    background: hsla(166, 100%, 41.6%, .12); border: 1px solid hsla(166, 100%, 41.6%, .35);
+    color: var(--teal-light); font-size: 13px; font-weight: 600; letter-spacing: .02em;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.7); } }
+
+  .build { margin: 40px 0 36px; width: 220px; height: 150px; position: relative; }
+  .frame { position: absolute; inset: 0; border: 2px solid hsla(0,0%,100%,.18); border-radius: 14px; background: hsla(210, 60%, 20%, .6); overflow: hidden; }
+  .bar { height: 22px; background: hsla(0,0%,100%,.06); display: flex; gap: 6px; align-items: center; padding: 0 10px; }
+  .bar span { width: 7px; height: 7px; border-radius: 50%; background: hsla(0,0%,100%,.25); }
+  .block { position: absolute; left: 16px; right: 16px; border-radius: 6px; background: linear-gradient(90deg, hsla(166,100%,41.6%,.85), hsla(166,100%,60%,.55)); transform-origin: left; animation: grow 3.6s ease-in-out infinite; }
+  .b1 { top: 38px; height: 26px; }
+  .b2 { top: 74px; height: 10px; right: 70px; animation-delay: .4s; opacity: .8; }
+  .b3 { top: 92px; height: 10px; right: 110px; animation-delay: .8s; opacity: .6; }
+  .b4 { top: 112px; height: 22px; right: 120px; animation-delay: 1.2s; }
+  @keyframes grow { 0% { transform: scaleX(0); } 35%, 80% { transform: scaleX(1); } 100% { transform: scaleX(0); opacity: 0; } }
+  .crane { position: absolute; top: -26px; right: -18px; width: 56px; height: 56px; animation: swing 3s ease-in-out infinite; transform-origin: 50% 0; }
+  @keyframes swing { 0%,100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+
+  h1 { font-size: clamp(30px, 5.5vw, 56px); font-weight: 800; line-height: 1.08; letter-spacing: -.02em; max-width: 900px; }
+  h1 .name { background: linear-gradient(90deg, #fff, var(--teal-light) 60%, var(--teal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { margin-top: 18px; font-size: clamp(16px, 2vw, 19px); color: var(--muted); max-width: 620px; line-height: 1.6; }
+  .lead-en { margin-top: 10px; font-size: 15px; color: hsla(210, 30%, 75%, .75); max-width: 620px; line-height: 1.6; }
+
+  .progress { margin: 36px auto 0; width: min(420px, 100%); }
+  .track { height: 8px; border-radius: 999px; background: hsla(0,0%,100%,.08); overflow: hidden; }
+  .fill { height: 100%; width: 40%; border-radius: 999px; background: linear-gradient(90deg, var(--teal), hsl(166, 90%, 65%)); animation: load 2.8s ease-in-out infinite; }
+  @keyframes load { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
+  .steps { display: flex; justify-content: space-between; margin-top: 12px; font-size: 12px; color: hsla(210, 30%, 75%, .8); }
+  .steps .on { color: var(--teal-light); font-weight: 600; }
+
+  .contact { margin-top: 44px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 12px; font-weight: 600; font-size: 15px; text-decoration: none; transition: transform .2s, background .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--teal); color: var(--navy); }
+  .btn-ghost { border: 1px solid hsla(0,0%,100%,.22); color: #fff; }
+  .btn-ghost:hover { background: hsla(0,0%,100%,.06); }
+
+  footer { position: relative; padding: 24px; text-align: center; font-size: 13px; color: hsla(210, 30%, 75%, .7); }
+  footer a { color: var(--teal-light); text-decoration: none; font-weight: 600; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }
+</style>
+</head>
+<body>
+<div class="grid"></div>
+<main>
+  <span class="badge"><span class="dot"></span>Đang xây dựng · Under construction</span>
+
+  <div class="build" aria-hidden="true">
+    <div class="frame">
+      <div class="bar"><span></span><span></span><span></span></div>
+      <div class="block b1"></div><div class="block b2"></div><div class="block b3"></div><div class="block b4"></div>
+    </div>
+    <svg class="crane" viewBox="0 0 56 56" fill="none">
+      <path d="M28 0v22" stroke="hsl(166,80%,85%)" stroke-width="2" stroke-dasharray="3 3"/>
+      <path d="M18 22h20l-4 14H22z" fill="hsl(166,100%,41.6%)"/>
+      <path d="M22 36h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <h1>Website mới của<br><span class="name">An đại phát</span><br>đang được xây dựng</h1>
+  <p class="lead">Đội ngũ rebuild.vn đang thiết kế lại website của bạn — nhanh hơn, đẹp hơn và tối ưu cho điện thoại. Bản demo sẽ sớm có mặt tại chính địa chỉ này.</p>
+  <p class="lead-en">The rebuild.vn team is crafting a faster, more beautiful, mobile-first website for An đại phát. Your demo will appear right here soon.</p>
+
+  <div class="progress" aria-hidden="true">
+    <div class="track"><div class="fill"></div></div>
+    <div class="steps"><span class="on">Phân tích</span><span class="on">Thiết kế</span><span>Hoàn thiện</span><span>Ra mắt</span></div>
+  </div>
+
+  <div class="contact">
+    <a class="btn btn-primary" href="tel:+84357240891">Gọi 0357.24.08.91</a>
+    <a class="btn btn-ghost" href="mailto:hi@rebuild.vn">hi@rebuild.vn</a>
+  </div>
+</main>
+<footer>Thiết kế bởi <a href="https://rebuild.vn" target="_blank" rel="noopener">rebuild.vn</a> · TP. Đà Nẵng, Việt Nam</footer>
+</body>
+</html>
